@@ -23,9 +23,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 @NgModule({
-  declarations: [AppComponent, CoursesNewComponent, CoursesListComponent],
+  declarations: [AppComponent, CoursesNewComponent, CoursesListComponent, UserRegisterComponent, UserLoginComponent],
 
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     FormsModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent],

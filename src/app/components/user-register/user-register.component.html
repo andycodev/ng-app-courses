@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-header>
+    <h5><nb-icon icon="people-outline"></nb-icon> Registrarse</h5>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="form">
+        <input type="email" formControlName="email" nbInput fullWidth shape="rectangle" placeholder="Ingresar email">
+        <div style="margin-bottom: 15px"></div>
+        <input type="password" formControlName="password"  nbInput fullWidth shape="rectangle" placeholder="Ingresar password">
+        <div style="margin-bottom: 15px"></div>
+        <button nbButton (click)="createUser()">Registrarse</button>
+    </form>
+  </nb-card-body>
+</nb-card>

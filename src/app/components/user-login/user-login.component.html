@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-header>
+        <h5>
+            <nb-icon icon="lock-outline"></nb-icon>
+            Login
+        </h5>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="form">
+            <input type="text" formControlName="email" nbInput fullWidth placeholder="Ingresar email">
+            <div style="margin-bottom: 15px"></div>
+            <input type="password" formControlName="password" nbInput fullWidth placeholder="Ingresar contraseña">
+            <div style="margin-bottom: 15px"></div>
+            <button nbButton (click)="signInUser()">Ingresar</button>
+        </form>
+    </nb-card-body>
+</nb-card>
