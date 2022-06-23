@@ -11,13 +11,14 @@ export class AppComponent {
   title = 'ng-app-courses';
   theme = 'default';
 
-
   toggleNgModel = false;
 
   constructor(
     private readonly themeService: NbThemeService,
-    private router: Router
-    ) {}
+    public router: Router
+  ) {}
+
+  ngOnInit(): void {}
 
   changeTheme() {
     setTimeout(() => {
@@ -25,7 +26,7 @@ export class AppComponent {
         ? [(this.toggleNgModel = true), (this.theme = 'dark')]
         : [(this.toggleNgModel = false), (this.theme = 'default')];
 
-        this.themeService.changeTheme(this.theme);
+      this.themeService.changeTheme(this.theme);
     }, 0);
   }
 }

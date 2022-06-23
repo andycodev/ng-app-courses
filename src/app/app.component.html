@@ -2,8 +2,8 @@
   <nb-layout-header fixed>
     <h5 [routerLink]="['/']" class="mrp-2">Cursos</h5>
 
-    <a [routerLink]="['/courses']" nbButton class="mr-2"><nb-icon icon="list-outline"></nb-icon>Lista</a>
-    <a [routerLink]="['/courses-new']" nbButton><nb-icon icon="plus-outline"></nb-icon>Nuevo</a>
+    <a [routerLink]="['/courses']" *ngIf="router.url === '/courses-new'" nbButton class="mr-2"><nb-icon icon="list-outline"></nb-icon>Lista</a>
+    <a [routerLink]="['/courses-new']" *ngIf="router.url === '/courses'" nbButton><nb-icon icon="plus-outline"></nb-icon>Nuevo</a>
 
     <nb-toggle style="margin-left: auto;" (click)="changeTheme()" [ngModel]="toggleNgModel">
       <nb-icon *ngIf="theme === 'dark'" icon="moon-outline"></nb-icon>
