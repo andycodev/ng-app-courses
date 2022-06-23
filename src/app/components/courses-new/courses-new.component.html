@@ -1,0 +1,32 @@
+<nb-card>
+  <nb-card-header>
+    <h5>
+      <nb-icon icon="plus-outline"></nb-icon>
+      Nuevo curso
+    </h5>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="form">
+      <input
+        type="text"
+        formControlName="name"
+        nbInput
+        fullWidth
+        shape="rectangle"
+        placeholder="Escribir nombre del curso"
+      />
+      <div style="margin-bottom: 15px"></div>
+      <textarea
+        formControlName="description"
+        nbInput
+        fullWidth
+        placeholder="Escribir una descripción"
+      ></textarea>
+    </form>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button nbButton [disabled]="form.invalid" (click)="saveCourse()"  class="mr-2"><nb-icon icon="save-outline"></nb-icon> Guardar</button>
+    <button nbButton [disabled]="form.invalid" (click)="form.reset()" ><nb-icon icon="close-outline"></nb-icon> Cancelar</button>
+  </nb-card-footer>
+</nb-card>

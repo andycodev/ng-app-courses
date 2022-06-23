@@ -1,0 +1,10 @@
+<nb-card *ngFor="let course of courses; index as i">
+  <nb-card-header> {{ i + 1 }} - {{ course.name }}</nb-card-header>
+  <nb-card-body>
+    {{ course.description }}
+  </nb-card-body>
+  <nb-card-footer>
+    <!-- <button nbButton class="mr-2"><nb-icon icon="edit-outline"></nb-icon> Editar</button> -->
+    <button nbButton (click)="deleteCourse(course.id)" ><nb-icon icon="trash-outline"></nb-icon> Eliminar</button>
+  </nb-card-footer>
+</nb-card>

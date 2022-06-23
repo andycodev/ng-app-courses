@@ -1,44 +1,31 @@
 import { Component } from '@angular/core';
-import { NbMenuItem, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { Router } from '@angular/router';
+import { NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
-
   title = 'ng-app-courses';
-  theme = "dark";
+  theme = 'default';
 
-  items: NbMenuItem[] = [
-    {
-      title: 'Home',
-      icon: 'home-outline',
-      link: '/home',
-      home: true
-    },
-    {
-      title: 'Users',
-      icon: 'people-outline',
-      link: '/users'
-    }
-  ];
+
+  toggleNgModel = false;
 
   constructor(
-    private readonly sidebarService: NbSidebarService,
-    private readonly themeService: NbThemeService
+    private readonly themeService: NbThemeService,
+    private router: Router
     ) {}
 
-    toggle() {
-      this.sidebarService.toggle(true);
-      return false;
-    }
+  changeTheme() {
+    setTimeout(() => {
+      !this.toggleNgModel
+        ? [(this.toggleNgModel = true), (this.theme = 'dark')]
+        : [(this.toggleNgModel = false), (this.theme = 'default')];
 
-  changeTheme($event:any) {
-    this.theme = $event;
-    this.themeService.changeTheme($event);
+        this.themeService.changeTheme(this.theme);
+    }, 0);
   }
-
 }

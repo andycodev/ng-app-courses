@@ -16,11 +16,16 @@ import {
   NbTabsetModule, NbTagModule, NbTimepickerModule, NbToggleModule, NbTooltipModule, NbUserModule
 } from "@nebular/theme";
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { HomeComponent } from './home/home.component';
 import { NbSidebarModule, NbMenuModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { CoursesNewComponent } from './components/courses-new/courses-new.component';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, CoursesNewComponent, CoursesListComponent],
 
   imports: [
     BrowserModule,
@@ -63,6 +68,10 @@ import { NbSidebarModule, NbMenuModule, NbThemeModule, NbLayoutModule } from '@n
     }),
     NbLayoutModule,
     NbEvaIconsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,25 +1,17 @@
 <nb-layout center>
   <nb-layout-header fixed>
-    <h5>courses</h5>
-    <nb-actions>
-      <nb-action icon="plus-outline"></nb-action>
-    </nb-actions>
+    <h5 [routerLink]="['/']" class="mrp-2">Cursos</h5>
+
+    <a [routerLink]="['/courses']" nbButton class="mr-2"><nb-icon icon="list-outline"></nb-icon>Lista</a>
+    <a [routerLink]="['/courses-new']" nbButton><nb-icon icon="plus-outline"></nb-icon>Nuevo</a>
+
+    <nb-toggle style="margin-left: auto;" (click)="changeTheme()" [ngModel]="toggleNgModel">
+      <nb-icon *ngIf="theme === 'dark'" icon="moon-outline"></nb-icon>
+      <nb-icon *ngIf="theme === 'default'" icon="sun-outline"></nb-icon>
+    </nb-toggle>
   </nb-layout-header>
 
-  <nb-layout-column class="colored-column-basic center">
-    <nb-card>
-      <nb-card-header>Nebula</nb-card-header>
-      <nb-card-body>
-        A nebula is an interstellar cloud of dust, hydrogen, helium and other
-        ionized gases. Originally, nebula was a name for any diffuse
-        astronomical object, including galaxies beyond the Milky Way.
-      </nb-card-body>
-      <nb-card-footer>
-        <nb-actions>
-          <nb-action icon="edit-outline"></nb-action>
-          <nb-action icon="close-outline"></nb-action>
-        </nb-actions>
-      </nb-card-footer>
-    </nb-card>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
   </nb-layout-column>
 </nb-layout>
