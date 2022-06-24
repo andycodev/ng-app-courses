@@ -8,7 +8,8 @@
         <div style="margin-bottom: 15px"></div>
         <input type="password" formControlName="password"  nbInput fullWidth shape="rectangle" placeholder="Ingresar password">
         <div style="margin-bottom: 15px"></div>
-        <button nbButton (click)="createUser()">Registrarse</button>
+        <button [disabled]="form.invalid" class="mr-2" nbButton (click)="createUser()">Registrarse</button>
+        <a [routerLink]="['/login']" nbButton>Login</a>
     </form>
   </nb-card-body>
 </nb-card>

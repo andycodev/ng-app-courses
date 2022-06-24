@@ -4,26 +4,31 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
 import { CoursesNewComponent } from './components/courses-new/courses-new.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
   {
     path: 'courses',
     component: CoursesListComponent,
+    ...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'courses-new',
     component: CoursesNewComponent,
+    ...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'register',
-    component: UserRegisterComponent 
+    component: UserRegisterComponent,
+    ...canActivate(()=> redirectLoggedInTo(['/login']))
   },
   {
     path: 'login',
-    component: UserLoginComponent
+    component: UserLoginComponent,
+    ...canActivate(()=> redirectLoggedInTo(['/courses']))
   },
-  { path: '', redirectTo: 'courses', pathMatch: 'full' },
-  { path: '**', redirectTo: 'courses' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbThemeService } from '@nebular/theme';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent {
 
   constructor(
     private readonly themeService: NbThemeService,
-    public router: Router
+    public router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {}
@@ -25,8 +27,16 @@ export class AppComponent {
       !this.toggleNgModel
         ? [(this.toggleNgModel = true), (this.theme = 'dark')]
         : [(this.toggleNgModel = false), (this.theme = 'default')];
-
+      
       this.themeService.changeTheme(this.theme);
     }, 0);
+  }
+
+  signOutUser(){
+    this.userService.logout()
+    .then(() => {
+      this.router.navigate(['/login']);
+    })
+    .catch(error => console.log(error));
   }
 }

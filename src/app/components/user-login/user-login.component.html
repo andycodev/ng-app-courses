@@ -11,7 +11,8 @@
             <div style="margin-bottom: 15px"></div>
             <input type="password" formControlName="password" nbInput fullWidth placeholder="Ingresar contraseña">
             <div style="margin-bottom: 15px"></div>
-            <button nbButton (click)="signInUser()">Ingresar</button>
+            <button [disabled]="form.invalid" class="mr-2" nbButton (click)="signInUser()">Ingresar</button>
+            <a [routerLink]="['/register']" nbButton>Registrarse</a>
         </form>
     </nb-card-body>
 </nb-card>

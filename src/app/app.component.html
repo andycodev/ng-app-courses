@@ -5,10 +5,13 @@
     <a [routerLink]="['/courses']" *ngIf="router.url === '/courses-new'" nbButton class="mr-2"><nb-icon icon="list-outline"></nb-icon>Lista</a>
     <a [routerLink]="['/courses-new']" *ngIf="router.url === '/courses'" nbButton><nb-icon icon="plus-outline"></nb-icon>Nuevo</a>
 
-    <nb-toggle style="margin-left: auto;" (click)="changeTheme()" [ngModel]="toggleNgModel">
+    <nb-toggle class="mr-2" style="margin-left: auto;" (click)="changeTheme()" [ngModel]="toggleNgModel">
       <nb-icon *ngIf="theme === 'dark'" icon="moon-outline"></nb-icon>
       <nb-icon *ngIf="theme === 'default'" icon="sun-outline"></nb-icon>
     </nb-toggle>
+    <button (click)="signOutUser()" *ngIf="router.url != '/login' && router.url != '/register' " nbButton>
+    <nb-icon icon="arrow-right-outline"></nb-icon>  
+    </button>
   </nb-layout-header>
 
   <nb-layout-column>
